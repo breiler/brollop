@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <h1>Anmäl gäst</h1>
+            <div class="form-group">
+                <label for="inputName">Namn</label>
+                <input type="text" class="form-control" id="inputName" placeholder="Skriv in ditt namn..."
+                       [(ngModel)]="guest.name">
+            </div>
+            <div class="form-group">
+                <label for="inputEmail">E-postadress</label>
+                <input type="email" class="form-control" id="inputEmail" placeholder="Skriv in din e-postadress"
+                       [(ngModel)]="guest.email">
+            </div>
+            <div class="form-group">
+                <label for="inputPhone">Telefonnummer</label>
+                <input type="tel" class="form-control" id="inputPhone" placeholder="Skriv in ditt telefonnummer"
+                       ng-required="true" [(ngModel)]="guest.phoneNumber">
+            </div>
+            <div class="form-check">
+                <label for="inputNotes">Eventuell specialkost</label>
+                <input type="tel" class="form-control" id="inputNotes" placeholder="Ange om du vill ha någon specialkost"
+                       ng-required="true" [(ngModel)]="guest.notes">
+            </div>
+            <div class="form-check">
+                <button class="btn" (click)="save(); $event.preventDefault()">Spara</button>
+            </div>
+        </div>
+    </div>
+</div>

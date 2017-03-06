@@ -1,0 +1,32 @@
+@import "../assets/variables";
+
+.welcome {
+    text-align: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.container {
+    max-width: 840px;
+}
+
+.row {
+    margin-bottom: 3em;
+}
+
+.side-picture img {
+    border-radius: 10px;
+}
+
+hr {
+    display: block;
+    border: none;
+    height: 13px;
+    background: url('assets/breaker.png')  no-repeat top center;
+    margin-bottom: 3em;
+}
+
+.guest {
+    height: 15em;
+
+}
