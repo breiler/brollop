@@ -1,7 +1,7 @@
-package brollop;
+package com.breiler.brollop;
 
-import brollop.health.TemplateHealthCheck;
-import brollop.resources.GuestResource;
+import com.breiler.brollop.health.TemplateHealthCheck;
+import com.breiler.brollop.resources.GuestResource;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.meltmedia.dropwizard.mongo.MongoBundle;
 import io.dropwizard.Application;
@@ -66,7 +66,7 @@ public class BrollopApplication extends Application<BrollopConfiguration> {
         BeanConfig config = new BeanConfig();
         config.setTitle("Swagger sample app");
         config.setVersion("1.0.0");
-        config.setResourcePackage("brollop");
+        config.setResourcePackage("com/breiler/brollop");
         config.setScan(true);
         config.setBasePath("/api");
     }

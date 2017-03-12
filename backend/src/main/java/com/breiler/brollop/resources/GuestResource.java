@@ -1,9 +1,9 @@
-package brollop.resources;
+package com.breiler.brollop.resources;
 
-import brollop.BrollopConfiguration;
-import brollop.StaticUtils;
-import brollop.contract.AddGuestDTO;
-import brollop.core.Guest;
+import com.breiler.brollop.BrollopConfiguration;
+import com.breiler.brollop.StaticUtils;
+import com.breiler.brollop.contract.AddGuestDTO;
+import com.breiler.brollop.core.Guest;
 import com.codahale.metrics.annotation.Timed;
 import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
@@ -19,13 +19,11 @@ import org.jongo.Jongo;
 import org.jongo.MongoCursor;
 
 import javax.inject.Inject;
-import javax.mail.Session;
 import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 

@@ -1,6 +1,5 @@
-package brollop.core;
+package com.breiler.brollop.core;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;

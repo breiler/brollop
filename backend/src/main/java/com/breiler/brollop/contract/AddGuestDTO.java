@@ -1,4 +1,4 @@
-package brollop.contract;
+package com.breiler.brollop.contract;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;

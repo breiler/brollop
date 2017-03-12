@@ -1,4 +1,4 @@
-package brollop;
+package com.breiler.brollop;
 
 import java.util.Random;
 

@@ -1,4 +1,4 @@
-package brollop;
+package com.breiler.brollop;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.meltmedia.dropwizard.mongo.MongoConfiguration;

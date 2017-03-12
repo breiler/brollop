@@ -13,3 +13,8 @@ server:
   - type: http
     port: 9001
 swaggerBasePath: http://localhost:9000/swagger
+smtpHost:
+smtpPort: 587
+smtpUsername: joacim@breiler.com
+smtpPassword:
+smtpEmail: joacim@breiler.com

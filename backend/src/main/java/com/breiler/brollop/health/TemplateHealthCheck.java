@@ -1,4 +1,4 @@
-package brollop.health;
+package com.breiler.brollop.health;
 
 import com.codahale.metrics.health.HealthCheck;
 
