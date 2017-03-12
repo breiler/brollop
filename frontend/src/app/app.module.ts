@@ -1,10 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { Routes } from "@angular/router";
-
 import { AlertModule } from 'ng2-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -31,7 +30,7 @@ export const routes: Routes = [
   imports: [
     RouterModule.forRoot(routes),
     BrowserModule,
-    FormsModule,
+    ReactiveFormsModule,
     HttpModule,
     AlertModule.forRoot()
   ],

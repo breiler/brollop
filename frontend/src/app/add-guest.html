@@ -1,30 +1,35 @@
 <div class="container">
     <div class="row">
         <div class="col">
-            <h1>Anmäl gäst</h1>
-            <div class="form-group">
-                <label for="inputName">Namn</label>
-                <input type="text" class="form-control" id="inputName" placeholder="Skriv in ditt namn..."
-                       [(ngModel)]="guest.name">
-            </div>
-            <div class="form-group">
-                <label for="inputEmail">E-postadress</label>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Skriv in din e-postadress"
-                       [(ngModel)]="guest.email">
-            </div>
-            <div class="form-group">
-                <label for="inputPhone">Telefonnummer</label>
-                <input type="tel" class="form-control" id="inputPhone" placeholder="Skriv in ditt telefonnummer"
-                       ng-required="true" [(ngModel)]="guest.phoneNumber">
-            </div>
-            <div class="form-check">
-                <label for="inputNotes">Eventuell specialkost</label>
-                <input type="tel" class="form-control" id="inputNotes" placeholder="Ange om du vill ha någon specialkost"
-                       ng-required="true" [(ngModel)]="guest.notes">
-            </div>
-            <div class="form-check">
-                <button class="btn" (click)="save(); $event.preventDefault()">Spara</button>
-            </div>
+            <form [formGroup]="myForm" novalidate (ngSubmit)="save()">
+                <h1>Anmäl gäst</h1>
+                <div class="form-group">
+                    <label for="inputName">Namn</label> <small *ngIf="!myForm.controls.name.valid">*</small>
+                    <input type="text" class="form-control" id="inputName" placeholder="Skriv in ditt namn"
+                           formControlName="name" autocomplete="name">
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail">E-postadress</label> <small *ngIf="!myForm.controls.email.valid">*</small>
+                    <input type="email" class="form-control" id="inputEmail" placeholder="Skriv in din e-postadress"
+                           formControlName="email" autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label for="inputPhone">Telefonnummer</label> <small *ngIf="!myForm.controls.phoneNumber.valid">*</small>
+                    <input type="tel" class="form-control" id="inputPhone" placeholder="Skriv in ditt telefonnummer"
+                           ng-required="true" formControlName="phoneNumber" autocomplete="tel">
+
+                </div>
+                <div class="form-group">
+                    <label for="inputNotes">Eventuell specialkost</label>
+                    <input type="tel" class="form-control" id="inputNotes" placeholder="Ange om du vill ha någon specialkost"
+                           ng-required="true" formControlName="notes">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-default" routerLink=""><span class="fa fa-chevron-left"></span> Tillbaka till första sidan</button>
+                    <button class="btn btn-success" type="submit" [disabled]="!myForm.valid"><span class="fa fa-envelope"></span> Skicka</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+s

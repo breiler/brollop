@@ -47,7 +47,7 @@ public class BrollopApplication extends Application<BrollopConfiguration> {
         final Jongo jongo = new Jongo(mongoBundle.getDB());
         environment.jersey().register(jongo);
 
-        environment.jersey().register(new GuestResource(jongo));
+        environment.jersey().register(new GuestResource(jongo, configuration));
         environment.jersey().setUrlPattern("/api/*");
 
 
@@ -69,7 +69,6 @@ public class BrollopApplication extends Application<BrollopConfiguration> {
         config.setResourcePackage("brollop");
         config.setScan(true);
         config.setBasePath("/api");
-
     }
 
     private void enableCORS(Environment environment) {

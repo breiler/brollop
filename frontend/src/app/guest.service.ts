@@ -18,7 +18,7 @@ export class GuestService {
             .map(() => <void>undefined)
             .toPromise();
 
-        p.catch(err => console.log(err));
+            p.catch(err => console.log(err));
         return p;
     }
 

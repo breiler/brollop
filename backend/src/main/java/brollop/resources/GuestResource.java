@@ -1,5 +1,6 @@
 package brollop.resources;
 
+import brollop.BrollopConfiguration;
 import brollop.StaticUtils;
 import brollop.contract.AddGuestDTO;
 import brollop.core.Guest;
@@ -8,14 +9,23 @@ import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.EmailException;
+import org.apache.commons.mail.SimpleEmail;
 import org.dozer.DozerBeanMapper;
 import org.dozer.Mapper;
 import org.jongo.Jongo;
 import org.jongo.MongoCursor;
 
 import javax.inject.Inject;
+import javax.mail.Session;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -26,11 +36,13 @@ public class GuestResource {
     private final AtomicLong counter;
 
     private final Jongo jongo;
+    private final BrollopConfiguration configuration;
 
     @Inject
-    public GuestResource(Jongo jongo) {
+    public GuestResource(Jongo jongo, BrollopConfiguration configuration) {
         this.jongo = jongo;
         this.counter = new AtomicLong();
+        this.configuration = configuration;
     }
 
     @GET
@@ -57,5 +69,22 @@ public class GuestResource {
         Guest g = mapper.map(guest, Guest.class);
         g.setUserId(StaticUtils.getRandomHexString(16));
         jongo.getCollection("guests").insert(g);
+
+        try {
+            ArrayList<InternetAddress> emailList = new ArrayList<>();
+            emailList.add(new InternetAddress(g.getEmail()));
+
+            Email email = new SimpleEmail();
+            email.setSubject("Välkommen till vårt bröllop");
+            email.setMsg("Du har nu anmält dig till Camilla och Joacims bröllop den 2:a september 2017, välkommen!\n\nTillbaka till hemsidan: http://brollop.breiler.com/.");
+            email.setTo(emailList);
+            email.setFrom(configuration.getSmtpEmail(), "Bröllop");
+            email.setHostName(configuration.getSmtpHost());
+            email.setSmtpPort(Integer.valueOf(configuration.getSmtpPort()));
+            email.setAuthenticator(new DefaultAuthenticator(configuration.getSmtpUsername(), configuration.getSmtpPassword()));
+            email.send();
+        } catch (AddressException | EmailException e) {
+            throw new RuntimeException("Kunde inte registrera", e);
+        }
     }
 }

@@ -1,11 +1,13 @@
 import {Component, ViewContainerRef} from "@angular/core";
 import { User, BackendService, Hero, HeroService } from "./shared";
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.scss'],
-    providers: [BackendService]
+    selector:       'app-root',
+    templateUrl:    './app.component.html',
+    styleUrls:      ['./app.component.scss'],
+    providers:      [BackendService]
 })
 export class AppComponent {
 
