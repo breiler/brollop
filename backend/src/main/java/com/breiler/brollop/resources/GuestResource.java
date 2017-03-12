@@ -9,6 +9,7 @@ import com.google.common.collect.Lists;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
+import lombok.extern.java.Log;
 import org.apache.commons.mail.DefaultAuthenticator;
 import org.apache.commons.mail.Email;
 import org.apache.commons.mail.EmailException;
@@ -30,6 +31,7 @@ import java.util.concurrent.atomic.AtomicLong;
 @Path("/guests")
 @Produces(MediaType.APPLICATION_JSON)
 @Api(value = "guests", description = "Resource for handling guests")
+@Log
 public class GuestResource {
     private final AtomicLong counter;
 
@@ -62,6 +64,8 @@ public class GuestResource {
     public void create(
             @ApiParam(value = "The guest to be added", required = true, example = "Test")
                     AddGuestDTO guest) {
+
+        log.info("Tog emot anmälan " + guest);
 
         Mapper mapper = new DozerBeanMapper();
         Guest g = mapper.map(guest, Guest.class);
