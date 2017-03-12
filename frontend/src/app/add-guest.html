@@ -24,12 +24,16 @@
                     <input type="tel" class="form-control" id="inputNotes" placeholder="Ange om du vill ha någon specialkost"
                            ng-required="true" formControlName="notes">
                 </div>
+
+                <div class="alert alert-danger" role="alert" *ngIf="error">
+                    <strong><i class="fa fa-warning"></i> Kunde inte skicka anmälan!</strong>
+                    <p>Försök igen lite senare eller kontakta oss per telefon.</p>
+                </div>
                 <div class="form-group">
                     <button class="btn btn-default" routerLink=""><span class="fa fa-chevron-left"></span> Tillbaka till första sidan</button>
-                    <button class="btn btn-success" type="submit" [disabled]="!myForm.valid"><span class="fa fa-envelope"></span> Skicka</button>
+                    <button class="btn btn-success"  type="submit" [disabled]="!myForm.valid"><span *ngIf="loading"><i class='fa fa-spinner fa-spin '></i> Skickar anmälan, vänta...</span><span *ngIf="!loading"><i class="fa fa-envelope"></i> Skicka</span></button>
                 </div>
             </form>
         </div>
     </div>
 </div>
-s

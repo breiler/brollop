@@ -24,3 +24,23 @@ h1, h2, h3, h4 {
         margin-left: 1em;
     }
 }
+
+.btn {
+    background-color: #dadada;
+    border-color: #ccc;
+}
+
+.btn-success {
+    background-color: #8CB23F;
+    border-color: #6E9422;
+}
+
+.btn-success:hover {
+    background-color: #6E9422;
+    border-color: #6E9422;
+}
+
+.alert {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

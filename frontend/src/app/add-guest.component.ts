@@ -14,11 +14,11 @@ import { GuestService } from "./guest.service";
 })
 export class AddGuestComponent implements OnInit {
 
-  public error: string;
+  public error: boolean = false;
   public myForm: FormGroup; // our model driven form
+  public loading: boolean = false;
 
-
-  constructor( private router: Router, private guestService: GuestService, private formBuilder: FormBuilder ) {
+  constructor( private router: Router, private guestService: GuestService, private formBuilder: FormBuilder) {
   }
 
   ngOnInit() {
@@ -31,6 +31,9 @@ export class AddGuestComponent implements OnInit {
   }
 
   save() {
+    this.loading = true;
+    this.error = false;
+
     let guest = new Guest();
     guest.name = this.myForm.controls['name'].value;
     guest.email = this.myForm.controls['email'].value;
@@ -38,7 +41,16 @@ export class AddGuestComponent implements OnInit {
     guest.notes = this.myForm.controls['notes'].value;
 
     this.guestService.addGuest(guest)
-        .catch(err => console.log(err))
-        .then(() => {this.router.navigate(['/thanks'])});
+        .catch(err => {
+            this.loading = false;
+            this.error = true;
+            console.log(err)
+        })
+        .then(() => {
+            if( !this.error ) {
+                this.loading = false;
+                this.router.navigate(['/thanks'])
+            }
+        });
   }
 }

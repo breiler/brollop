@@ -3,6 +3,7 @@ import { Subject }    from 'rxjs/Subject';
 import { Guest }      from './model';
 import {Http, Response, Headers, RequestOptionsArgs} from "@angular/http";
 import {environment} from "../environments/environment";
+import 'rxjs/add/operator/timeout';
 
 
 @Injectable()
@@ -15,6 +16,7 @@ export class GuestService {
 
     addGuest(guest: Guest) : Promise<void>  {
         let p = this.http.post(this.backendUrlBase + '/guests', guest, this.optionsWithHeaders())
+            .timeout(4000)
             .map(() => <void>undefined)
             .toPromise();
 
@@ -24,7 +26,6 @@ export class GuestService {
 
     private optionsWithHeaders():RequestOptionsArgs {
         const headers = new Headers();
-        //headers.append('x-cag-token', localStorage.getItem("cag-admin-token"));
         return {headers: headers};
     }
 }
