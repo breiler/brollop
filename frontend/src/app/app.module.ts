@@ -5,6 +5,8 @@ import { HttpModule } from '@angular/http';
 import { RouterModule }   from '@angular/router';
 import { Routes } from "@angular/router";
 import { AlertModule } from 'ng2-bootstrap';
+import {HashLocationStrategy, Location, LocationStrategy} from '@angular/common';
+
 
 import { AppComponent } from './app.component';
 import { AddGuestComponent } from "./add-guest.component";
@@ -34,7 +36,7 @@ export const routes: Routes = [
     HttpModule,
     AlertModule.forRoot()
   ],
-  providers: [GuestService],
+  providers: [GuestService, Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
