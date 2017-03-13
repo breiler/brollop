@@ -9,31 +9,6 @@
 
     <hr/>
 
-    <script type="text/javascript">
-
-        function vidplay() {
-           var video = document.getElementById("video");
-           var button = document.getElementById("play");
-           if (video.paused) {
-              video.play();
-              button.textContent = "||";
-           } else {
-              video.pause();
-              button.textContent = ">";
-           }
-        }
-
-        function restart() {
-            var video = document.getElementById("Video1");
-            video.currentTime = 0;
-        }
-
-        function skip(value) {
-            var video = document.getElementById("Video1");
-            video.currentTime += value;
-        }
-    </script>
-
     <div class="row content">
         <div class="col-sm-12 text-xs-center">
                 <h2>Vigsel och fest</h2>
@@ -42,7 +17,7 @@
                 <p>Klädsel: Kavaj</p>
                 <p>Vi önskar fira dagen och kvällen i vuxet sällskap men barn av årets skörd är självklart välkomna!</p>
                 <video id="video" poster="/assets/carlhallsgard3.png" onclick="if (this.paused) { this.play(); } else { this.pause(); }">
-                    <source src="/assets/475977801.mp4" type="video/mp4">
+                    <source src="/media/475977801.mp4" type="video/mp4">
                 </video>
         </div>
     </div>
