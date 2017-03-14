@@ -78,7 +78,7 @@ public class GuestResource {
 
             Email email = new SimpleEmail();
             email.setSubject("Välkommen till vårt bröllop");
-            email.setMsg("Du har nu anmält dig till Camilla och Joacims bröllop den 2:a september 2017, välkommen!\n\nTillbaka till hemsidan: http://brollop.breiler.com/.");
+            email.setMsg("Du har nu anmält dig till Camilla och Joacims bröllop den 2:a september 2017, välkommen!");
             email.setTo(emailList);
             email.setFrom(configuration.getSmtpEmail(), "Bröllop");
             email.setHostName(configuration.getSmtpHost());
